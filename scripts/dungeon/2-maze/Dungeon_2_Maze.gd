@@ -34,7 +34,6 @@ func _physics_process(delta):
 			if quest_completed == false:
 				can_accept_quests = true
 				#it works
-			
 		SURVIVAL:
 			can_accept_quests = false
 			
@@ -91,3 +90,7 @@ func _on_Huntersubquest_body_entered(body):
 		print("number of mob left : " , Hunter_quest.number_to_kill)
 		can_hunt = true
 		Hunter_quest.can_accept_quest = false
+
+
+func _on_Huntedsub_quest_body_entered(body):
+	pass # Replace with function body.

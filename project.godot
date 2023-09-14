@@ -10,12 +10,18 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
-"class": "sub_quest",
+"class": "QuestType",
 "language": "GDScript",
 "path": "res://scenes/tower/floor_2/Hunt.gd"
+}, {
+"base": "Node",
+"class": "Quest_Manager",
+"language": "GDScript",
+"path": "res://scenes/tower/floor_2/maze_script/Quest_Manager.gd"
 } ]
 _global_script_class_icons={
-"sub_quest": ""
+"QuestType": "",
+"Quest_Manager": ""
 }
 
 [application]

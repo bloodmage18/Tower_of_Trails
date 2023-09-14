@@ -1,11 +1,11 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://scripts/dungeon/2-maze/Dungeon_2_Maze.gd" type="Script" id=1]
+[ext_resource path="res://scenes/tower/floor_2/maze_script/Dungeon_2_Maze.gd" type="Script" id=1]
 [ext_resource path="res://scenes/tower/floor_2/temp_fld/Area.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/test_bot/test_bot.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/tower/floor_2/mob/Mob.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/tower/floor_2/mob/Mob.gd" type="Script" id=5]
-[ext_resource path="res://scenes/tower/floor_2/Hunt.gd" type="Script" id=6]
+[ext_resource path="res://scenes/tower/floor_2/maze_script/Quest_Manager.gd" type="Script" id=7]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.396078, 0.392157, 0.392157, 1 )
@@ -52,6 +52,8 @@ size = Vector3( 14, 6, 2 )
 [sub_resource type="SpatialMaterial" id=16]
 albedo_color = Color( 0.952941, 0.270588, 0.270588, 1 )
 
+[sub_resource type="CanvasItemMaterial" id=17]
+
 [node name="Dungeon_2_Maze" type="Spatial"]
 script = ExtResource( 1 )
 
@@ -81,93 +83,154 @@ script = ExtResource( 5 )
 [node name="MeshInstance" parent="Mob" index="0"]
 material/0 = SubResource( 11 )
 
-[node name="Survival" type="Node" parent="."]
+[node name="Quest_Manager" type="Node" parent="."]
+script = ExtResource( 7 )
 
-[node name="Set_Time" type="Timer" parent="Survival"]
+[node name="Main_Quests" type="Node" parent="Quest_Manager"]
+
+[node name="Survival" type="Node" parent="Quest_Manager/Main_Quests"]
+
+[node name="survivalTimer" type="Timer" parent="Quest_Manager/Main_Quests/Survival"]
 wait_time = 10.0
 one_shot = true
 
-[node name="Survival_Gate" parent="Survival" instance=ExtResource( 2 )]
+[node name="Survival_Gate" parent="Quest_Manager/Main_Quests/Survival" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9807, 0.318506, -101.498 )
 collision_layer = 2
 
-[node name="MeshInstance" parent="Survival/Survival_Gate" index="0"]
+[node name="MeshInstance" parent="Quest_Manager/Main_Quests/Survival/Survival_Gate" index="0"]
 mesh = SubResource( 6 )
 material/0 = SubResource( 2 )
 
-[node name="CollisionShape" parent="Survival/Survival_Gate" index="1"]
+[node name="CollisionShape" parent="Quest_Manager/Main_Quests/Survival/Survival_Gate" index="1"]
 shape = SubResource( 3 )
 
-[node name="Traversal" type="Node" parent="."]
+[node name="Traversal" type="Node" parent="Quest_Manager/Main_Quests"]
 
-[node name="Start_point" parent="Traversal" instance=ExtResource( 2 )]
+[node name="Start_point" parent="Quest_Manager/Main_Quests/Traversal" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8636, 0.262761, -101.469 )
 
-[node name="MeshInstance" parent="Traversal/Start_point" index="0"]
+[node name="MeshInstance" parent="Quest_Manager/Main_Quests/Traversal/Start_point" index="0"]
 mesh = SubResource( 7 )
 material/0 = SubResource( 4 )
 
-[node name="CollisionShape" parent="Traversal/Start_point" index="1"]
+[node name="CollisionShape" parent="Quest_Manager/Main_Quests/Traversal/Start_point" index="1"]
 shape = SubResource( 8 )
 
-[node name="End_point" parent="Traversal" instance=ExtResource( 2 )]
+[node name="End_point" parent="Quest_Manager/Main_Quests/Traversal" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00849056, 2.15992, 109.435 )
 
-[node name="MeshInstance" parent="Traversal/End_point" index="0"]
+[node name="MeshInstance" parent="Quest_Manager/Main_Quests/Traversal/End_point" index="0"]
 mesh = SubResource( 9 )
 material/0 = SubResource( 4 )
 
-[node name="CollisionShape" parent="Traversal/End_point" index="1"]
+[node name="CollisionShape" parent="Quest_Manager/Main_Quests/Traversal/End_point" index="1"]
 shape = SubResource( 10 )
 
-[node name="Sub_Quests" type="Node" parent="."]
+[node name="Sub_Quests" type="Node" parent="Quest_Manager"]
 
-[node name="Hunt" type="Node" parent="Sub_Quests"]
-script = ExtResource( 6 )
+[node name="Hunt" type="Node" parent="Quest_Manager/Sub_Quests"]
 
-[node name="Hunted-sub_quest" parent="Sub_Quests" instance=ExtResource( 2 )]
+[node name="Hunted-sub_quest" parent="Quest_Manager/Sub_Quests" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8476, 0, -78.6977 )
 
-[node name="MeshInstance" parent="Sub_Quests/Hunted-sub_quest" index="0"]
+[node name="MeshInstance" parent="Quest_Manager/Sub_Quests/Hunted-sub_quest" index="0"]
 mesh = SubResource( 14 )
 material/0 = SubResource( 15 )
 
-[node name="CollisionShape" parent="Sub_Quests/Hunted-sub_quest" index="1"]
+[node name="CollisionShape" parent="Quest_Manager/Sub_Quests/Hunted-sub_quest" index="1"]
 shape = SubResource( 13 )
 
-[node name="None" parent="Sub_Quests" instance=ExtResource( 2 )]
+[node name="None" parent="Quest_Manager/Sub_Quests" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11528, 0, -78.6977 )
 
-[node name="MeshInstance" parent="Sub_Quests/None" index="0"]
+[node name="MeshInstance" parent="Quest_Manager/Sub_Quests/None" index="0"]
 mesh = SubResource( 12 )
 
-[node name="CollisionShape" parent="Sub_Quests/None" index="1"]
+[node name="CollisionShape" parent="Quest_Manager/Sub_Quests/None" index="1"]
 shape = SubResource( 13 )
 
-[node name="Hunter-sub-quest" parent="Sub_Quests" instance=ExtResource( 2 )]
+[node name="Hunter-sub-quest" parent="Quest_Manager/Sub_Quests" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9947, 0, -78.6977 )
 
-[node name="MeshInstance" parent="Sub_Quests/Hunter-sub-quest" index="0"]
+[node name="MeshInstance" parent="Quest_Manager/Sub_Quests/Hunter-sub-quest" index="0"]
 mesh = SubResource( 12 )
 material/0 = SubResource( 16 )
 
-[node name="CollisionShape" parent="Sub_Quests/Hunter-sub-quest" index="1"]
+[node name="CollisionShape" parent="Quest_Manager/Sub_Quests/Hunter-sub-quest" index="1"]
 shape = SubResource( 13 )
 
-[connection signal="kill_count_plus" from="Mob" to="Sub_Quests/Hunt" method="_on_Mob_kill_count_plus"]
+[node name="Control" type="Control" parent="Quest_Manager"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="Quest_Manager/Control"]
+material = SubResource( 17 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0352941, 0.054902, 0.133333, 0.309804 )
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Quest_Manager/Control"]
+anchor_left = 0.026
+anchor_top = 0.543
+anchor_right = 0.739
+anchor_bottom = 0.938
+margin_left = 0.375999
+margin_top = 0.199982
+margin_right = 0.263977
+margin_bottom = 0.200012
+
+[node name="Label" type="Label" parent="Quest_Manager/Control/VBoxContainer"]
+margin_top = 13.0
+margin_right = 109.0
+text = "accept Sub quest"
+
+[node name="CheckButton" type="CheckButton" parent="Quest_Manager/Control/VBoxContainer"]
+margin_left = 113.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Quest_Manager/Control"]
+anchor_left = 0.028
+anchor_top = 0.02
+anchor_right = 0.974
+anchor_bottom = 0.515
+margin_left = 0.327999
+margin_right = -0.376038
+margin_bottom = -3.05176e-05
+
+[node name="Label" type="Label" parent="Quest_Manager/Control/VBoxContainer2"]
+margin_right = 968.0
+margin_bottom = 14.0
+text = "main quest"
+align = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Quest_Manager/Control/VBoxContainer2"]
+anchor_bottom = 0.071
+margin_top = 22.0
+margin_right = 968.0
+margin_bottom = 18.0
+
+[node name="Button" type="Button" parent="Quest_Manager/Control/VBoxContainer2"]
+margin_top = 22.0
+margin_right = 968.0
+margin_bottom = 56.0
+text = "survival quest
+"
+
+[node name="Button2" type="Button" parent="Quest_Manager/Control/VBoxContainer2"]
+margin_top = 60.0
+margin_right = 968.0
+margin_bottom = 94.0
+text = "Escape Quest
+"
+
 [connection signal="body_entered" from="Mob/Area" to="Mob" method="_on_Area_body_entered"]
-[connection signal="timeout" from="Survival/Set_Time" to="." method="_on_Set_Time_timeout"]
-[connection signal="body_entered" from="Survival/Survival_Gate" to="." method="_on_Area_body_entered"]
-[connection signal="body_entered" from="Traversal/Start_point" to="." method="_on_Start_point_body_entered"]
-[connection signal="body_entered" from="Traversal/End_point" to="." method="_on_End_point_body_entered"]
-[connection signal="sub_quest_1_done" from="Sub_Quests/Hunt" to="." method="_on_Hunt_sub_quest_1_done"]
-[connection signal="body_entered" from="Sub_Quests/None" to="." method="_on_None_body_entered"]
-[connection signal="body_entered" from="Sub_Quests/Hunter-sub-quest" to="." method="_on_Huntersubquest_body_entered"]
+[connection signal="body_entered" from="Quest_Manager/Main_Quests/Survival/Survival_Gate" to="Quest_Manager" method="_on_Survival_Gate_body_entered"]
+[connection signal="body_entered" from="Quest_Manager/Main_Quests/Traversal/Start_point" to="Quest_Manager" method="_on_Escape_Gate_body_entered"]
 
 [editable path="Mob"]
-[editable path="Survival/Survival_Gate"]
-[editable path="Traversal/Start_point"]
-[editable path="Traversal/End_point"]
-[editable path="Sub_Quests/Hunted-sub_quest"]
-[editable path="Sub_Quests/None"]
-[editable path="Sub_Quests/Hunter-sub-quest"]
+[editable path="Quest_Manager/Main_Quests/Survival/Survival_Gate"]
+[editable path="Quest_Manager/Main_Quests/Traversal/Start_point"]
+[editable path="Quest_Manager/Main_Quests/Traversal/End_point"]
+[editable path="Quest_Manager/Sub_Quests/Hunted-sub_quest"]
+[editable path="Quest_Manager/Sub_Quests/None"]
+[editable path="Quest_Manager/Sub_Quests/Hunter-sub-quest"]
