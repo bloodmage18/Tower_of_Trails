@@ -1,0 +1,94 @@
+
+this is where we will store the
+models and animations
+
+lets go shopping ;)
+
+since this is just the start
+well go with 4 to five or six
+animations 
+
+lets go with the basic
+locomotion pack
+
+that ill be all for the 
+setup
+
+now to merge animations follow along 
+ 
+
+
+
+head over to where you stored the models
+and animations
+
+now add animations
+
+so the steps include
+* initialize character
+* join animation
+	note that all animations
+	must be in the same folder
+* add root motion
+* name and export the file
+
+now for the second one or our
+main focus for the tutorial
+
+there are more animations so it 
+might take a while so with the
+power of skipping
+
+3
+2
+1
+
+
+
+
+
+
+and done
+
+
+
+now back to blender and 
+setting the field then well wrap up the intro
+
+for a field to test this
+ i have no clue 
+
+i appologise if im going to fast
+a detail tutorial will be done 
+for the first episode of the godot conbat controller
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

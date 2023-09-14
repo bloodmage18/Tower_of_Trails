@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="DirectionalLight" type="DirectionalLight"]
+transform = Transform( -0.771935, -0.399905, -0.494159, -0.348082, 0.916354, -0.197826, 0.531936, 0.0192988, -0.846565, 0, 8.52998, 0 )
+light_color = Color( 0.580392, 0.580392, 0.580392, 1 )
+light_energy = 3.32
