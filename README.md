@@ -17,7 +17,7 @@ hunt : kill specific [targets] during the 'maze' - native npc that live in the m
 
 hunted : will be hunted down by specific [targets] that live in the maze
 
-none : will cont accept sub quest
+none : will continue without accepting a sub quest
 
 summary 
 main quest [ A - Survive , B - Escape ]
