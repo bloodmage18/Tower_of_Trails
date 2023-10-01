@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "QuestType",
 "language": "GDScript",
-"path": "res://scenes/tower/floor_2/Hunt.gd"
+"path": "res://scenes/tower/floor_2/maze_script/Hunt.gd"
 }, {
 "base": "Node",
 "class": "Quest_Manager",
@@ -28,6 +28,15 @@ _global_script_class_icons={
 
 config/name="Tower_of_Trails"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/test_width=780
+window/size/test_height=480
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [gui]
 

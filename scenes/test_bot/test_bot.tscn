@@ -24,7 +24,7 @@ size = Vector3( 1.008, 0.4, 0.874 )
 flags_unshaded = true
 albedo_color = Color( 0.72549, 0.729412, 0.231373, 1 )
 
-[node name="test_bot" type="KinematicBody"]
+[node name="test_bot" type="KinematicBody" groups=["Player"]]
 collision_mask = 2
 script = ExtResource( 2 )
 

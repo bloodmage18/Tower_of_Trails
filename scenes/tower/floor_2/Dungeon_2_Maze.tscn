@@ -74,7 +74,7 @@ height = 4.0
 depth = 258.0
 material = SubResource( 1 )
 
-[node name="test_bot" parent="." groups=["player"] instance=ExtResource( 3 )]
+[node name="test_bot" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.700457, 0, -115.337 )
 
 [node name="Mob" parent="." instance=ExtResource( 4 )]
@@ -161,6 +161,7 @@ material/0 = SubResource( 16 )
 shape = SubResource( 13 )
 
 [node name="Control" type="Control" parent="Quest_Manager"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -181,12 +182,15 @@ margin_right = 0.263977
 margin_bottom = 0.200012
 
 [node name="Label" type="Label" parent="Quest_Manager/Control/VBoxContainer"]
-margin_top = 13.0
+margin_top = 111.0
 margin_right = 109.0
+margin_bottom = 125.0
 text = "accept Sub quest"
 
 [node name="CheckButton" type="CheckButton" parent="Quest_Manager/Control/VBoxContainer"]
 margin_left = 113.0
+margin_right = 189.0
+margin_bottom = 237.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Quest_Manager/Control"]
 anchor_left = 0.028
@@ -198,27 +202,26 @@ margin_right = -0.376038
 margin_bottom = -3.05176e-05
 
 [node name="Label" type="Label" parent="Quest_Manager/Control/VBoxContainer2"]
-margin_right = 968.0
+margin_right = 967.0
 margin_bottom = 14.0
 text = "main quest"
 align = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Quest_Manager/Control/VBoxContainer2"]
-anchor_bottom = 0.071
-margin_top = 22.0
-margin_right = 968.0
+margin_top = 18.0
+margin_right = 967.0
 margin_bottom = 18.0
 
 [node name="Button" type="Button" parent="Quest_Manager/Control/VBoxContainer2"]
 margin_top = 22.0
-margin_right = 968.0
+margin_right = 967.0
 margin_bottom = 56.0
 text = "survival quest
 "
 
 [node name="Button2" type="Button" parent="Quest_Manager/Control/VBoxContainer2"]
 margin_top = 60.0
-margin_right = 968.0
+margin_right = 967.0
 margin_bottom = 94.0
 text = "Escape Quest
 "

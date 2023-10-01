@@ -10,14 +10,6 @@ enum QuestType {
 	SUB_NONE
 	}
 
-# Constants for quest types
-#const MAIN_SURVIVE = 0
-#const MAIN_ESCAPE = 1
-#const SUB_HUNT = 2
-#const SUB_HUNTED = 3
-#const SUB_NONE = 4
-
-
 # Main quest variables
 var surviveTimer: Timer
 var keysCollected: int = 0
@@ -38,6 +30,7 @@ func _ready():
 	exitDoor = $Main_Quests/Traversal/End_point
 	huntedPlayerArea = $"Sub_Quests/Hunted-sub_quest"
 	
+	
 	surviveTimer.connect("timeout", self, "_on_SurviveTimerTimeout")
 	exitDoor.connect("body_entered", self, "_on_ExitDoorEntered")
 	huntedPlayerArea.connect("body_entered", self, "_on_HuntedPlayerEntered")
@@ -54,6 +47,7 @@ func startMainQuest(questType):
 		QuestType.MAIN_ESCAPE:
 			# Initialize exit door and key logic
 			exitDoor.disabled = true
+#			exitDoor.get_node("CollisionShape").disabled = true
 			keysCollected = 0
 
 func completeMainQuest(questType):
@@ -140,8 +134,12 @@ func skipSubQuest(questType):
 
 func _on_Survival_Gate_body_entered(body):
 	if body.is_in_group("Player"):
+		print(" Survival Main Quest Started")
 		startMainQuest(QuestType.MAIN_SURVIVE)
+		
+		
 	
 func _on_Escape_Gate_body_entered(body):
 	if body.is_in_group("Player"):
+		print(" Traversal Main Quest Started")
 		startMainQuest(QuestType.MAIN_ESCAPE)
