@@ -14,8 +14,10 @@ clear conditions - Main Quest
 
 optional - Sub Quest 
 hunt : kill specific [targets] during the 'maze' - native npc that live in the maze
-hunted : will be hunted down by specific [targets] that live in the maze 
-none : will cont accept sub quest
+
+hunted : will be hunted down by specific [targets] that live in the maze
+
+none : will continue without accepting a sub quest
 
 summary 
 main quest [ A - Survive , B - Escape ]
